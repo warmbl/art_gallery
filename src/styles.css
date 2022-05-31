@@ -1,5 +1,61 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+}
+html{
+    height: 100%;
+    width: 100%;
+    background: black;
+}
+body{
+    height: 100%;
+    width: 100%;
+}
+.background-art{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(#f8a4d8, #6c63ff);
+    box-shadow: 3px -63px 43px -4px rgba(0, 0, 0, 0.2) inset;
+    min-height: 100%;
+    display: grid;
+}
+img{
+    width: 60%;
+    height: 60%;
+    transition: 0.3s;
+}
+img:hover{
+    width: 70%;
+    height: 70%;
+    transition: 0.3s;
+}
+button{
+    border: 0;
+    background-color: rgba(0,0,0,0);
+}
+footer{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+}
+.social-network{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+.button-menu{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+.sign{
+    width: 20%;
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    font-style: italic;
+    
 }

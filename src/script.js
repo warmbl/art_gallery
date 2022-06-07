@@ -1,18 +1,24 @@
-/* eslint-disable no-undef */
-// eslint-disable-next-line no-undef
-var $menu = $(".content");
+let open = document.querySelector(".open-gallery");
+let close = document.querySelector(".close-gallery");
+let gall = document.querySelector(".center-menu");
 
-var settingsForMenu = {
-    dots: false,
-    arrows: false,
-    slide: ".card",
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    centerMode: false,
-    touchThreshold: 100,
+function open_gall() {
+    gall.style.visibility = "visible";
+    gall.style.animation = "up 0.5s linear 1";
 
-    centerPadding: "60px",
-};
+    open.style.display = "none";
+    close.style.display = "inline";
+}
 
-$menu.slick(settingsForMenu);
-$menu.slick("slickGoTo", 1);
+function close_gall() {
+    gall.style.animation = "down 0.5s linear 1";
+    window.setTimeout(function () {
+        gall.style.visibility = "hidden";
+    }, 450);
+
+    open.style.display = "inline";
+    close.style.display = "none";
+}
+
+open.addEventListener("click", open_gall);
+close.addEventListener("click", close_gall);

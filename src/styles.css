@@ -64,10 +64,7 @@ footer {
     position: absolute;
     width: 100%;
     height: 80%;
-    display: flex;
-    flex-direction: column;
-    /*border: 1px solid rgb(255, 255, 255);*/
-    margin-top: 5%;
+    margin-top: 10%;
     visibility: hidden;
 }
 
@@ -117,12 +114,7 @@ footer {
 
 .headline {
     margin-left: 5%;
-    margin-top: 5%;
     margin-bottom: 2%;
-    /*
-
-    visibility: hidden;
-    */
 }
 
 p,
@@ -130,6 +122,7 @@ h1 {
     color: white;
     text-shadow: #000839 0 0 15px;
     margin-left: 10%;
+    margin-right: 10%;
 }
 
 .author {
@@ -148,4 +141,43 @@ h1 {
 
 .close-gallery {
     display: none;
+}
+.card{
+    height: 80%;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 10px;
+    overflow: hidden; /* чтобы работал бордер-радиус*/
+    transition: 0.5s;
+}
+
+.card:hover{
+    height: 84%;
+    width: 94%;
+    transition: 0.5s;
+}
+
+.card-art {
+    width: 100%;
+    height: 60%;
+    background-color: black;
+}
+.card-name{
+    background-color: white;
+    width: 100%;
+    height: 40%;
+    display: flex;
+}
+.img-div{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+.art-name{
+    color: black;
+    text-shadow: none;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    width: 80%;
+    overflow: hidden;
 }

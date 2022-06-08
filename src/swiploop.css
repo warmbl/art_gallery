@@ -1,26 +1,19 @@
 .swiploop {
     overflow: hidden;
     position: absolute;
-    top: 20%;
     width: 100%; /* Ширина блока */
-    height: 60%; /* Высота блока */
-
+    height: 80%; /* Высота блока */
     display: flex;
     flex-direction: row;
 }
 
 .slider {
     overflow: scroll; /*Добавляем полосы прокрутки */
-
     overflow-y: hidden;
     width: 100%; /* Ширина блока */
     height: 100%; /* Высота блока */
-    /*border: solid 1px rgb(0, 167, 72);*/
     display: flex;
     flex-direction: row;
-
-    /*scrollbar-width: thin;*/
-
     --webkit-overflow-scrolling: touch;
 }
 
@@ -31,21 +24,5 @@
 .slider-item {
     min-width: 350px;
     height: 100%;
-    /*
-    margin-right: 20px;
-    margin-left: 20px;
-    */
-    /*border: 1px solid rgb(255, 255, 255);*/
     scroll-behavior: smooth;
-}
-
-.img-div {
-    position: relative;
-    left: 1%;
-    top: 2.5%;
-    width: 98%;
-    height: 95%;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
 }

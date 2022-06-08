@@ -102,7 +102,7 @@ const move = e => {
     } else if (clonesWidth + scrollPos >= scrollWidth) {
         console.log(scrollPos + " Больше нуля - Правая граница");
         setScrollPos(1);
-        scrollLeft = slider.scrollLeft + dist + 350;
+        scrollLeft = slider.scrollLeft + dist;
     }
 };
 
@@ -114,12 +114,12 @@ function wheelMove(ev) {
 
     let what = ev.deltaY;
     scrollWheel = slider.scrollLeft;
-    console.log(what);
-    if (what < 0) {
-        console.log("скрол вверх");
+    //console.log(what);
+    if (what == -125) {
+        //console.log("скрол вверх");
         slider.scrollLeft = scrollWheel - 90;
-    } else if (what > 0) {
-        console.log("скрол вниз");
+    } else if (what == 125) {
+        //console.log("скрол вниз");
         slider.scrollLeft = scrollWheel + 90;
     }
 }
@@ -133,6 +133,7 @@ function onLoad() {
     });
 
     clones = slider.querySelectorAll(".js-clone");
+    //console.log(clones);
 
     reCalc();
 

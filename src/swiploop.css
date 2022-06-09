@@ -25,4 +25,7 @@
     min-width: 350px;
     height: 100%;
     scroll-behavior: smooth;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

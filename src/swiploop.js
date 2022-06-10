@@ -1,10 +1,3 @@
-// Подгрузка изображений из папки
-let images = [...document.querySelectorAll(".img-div")]; //
-
-images.forEach((image, idx) => {
-    image.style.backgroundImage = `url(./images/${idx + 1}.jpg)`;
-});
-
 // Scroll update
 let doc = window.document,
     slider = doc.querySelector(".js-slider"),
@@ -126,6 +119,12 @@ function wheelMove(ev) {
 
 // Выполняется при загрузке страницы
 function onLoad() {
+    // Подгрузка изображений из папки
+    let images = [...document.querySelectorAll(".img-div")]; //
+
+    images.forEach((image, idx) => {
+        image.style.backgroundImage = `url(./images/${idx + 1}.jpg)`;
+    });
     Array.from(items, item => {
         const clone = item.cloneNode(true);
         slider.appendChild(clone);

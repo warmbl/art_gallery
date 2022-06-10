@@ -1,8 +1,12 @@
 let open = document.querySelector(".open-gallery");
 let close = document.querySelector(".close-gallery");
 let center_menu = document.querySelector(".center-menu");
+let back = document.querySelector("body");
+let blackout = document.querySelector(".blackout");
 let menu_item;
 let can_open = true;
+let cards;
+let addDiv;
 
 // Функция для анимации массива элементов с задержкой
 const delayLoop = (fn, delay) => {
@@ -31,7 +35,8 @@ function open_gall() {
     if (can_open) {
         //
         menu_item.forEach(delayLoop(appear, 100));
-        console.log(menu_item);
+        blackout.style.opacity = "0.8";
+        //console.log(menu_item);
         setTimeout(() => {
             center_menu.style.visibility = "visible";
         }, 400);
@@ -53,13 +58,100 @@ function close_gall() {
         setTimeout(() => {
             open.style.display = "inline";
             close.style.display = "none";
+            blackout.style.opacity = "0";
             can_open = true;
         }, 200);
     } else return;
 }
 
+// Анимационный круг (боже, храни эту функцию)
+function addElement(e) {
+    addDiv = document.createElement("div");
+    let maxValue = Math.max(back.clientWidth, back.clientHeight),
+        sDiv = addDiv.style;
+    back.appendChild(addDiv);
+    sDiv.width = sDiv.height = maxValue + "px";
+    sDiv.left = e.clientX - maxValue / 2 + "px";
+    sDiv.top = e.clientY - maxValue / 2 + "px";
+    let f = e.clientX + "px";
+    let s = e.clientY + "px";
+
+    addDiv.classList.add("pulse");
+    addDiv.style.clipPath = "circle(10% at " + f + " " + s + ")";
+    setTimeout(() => {
+        addDiv.style.clipPath = "circle(100% at " + f + " " + s + ")";
+    }, 1);
+}
+function deleteElement() {
+    setTimeout(() => {
+        back.lastChild.remove();
+    }, 3000);
+}
+
 function load() {
     menu_item = center_menu.querySelectorAll(".slider-item");
+    cards = document.querySelectorAll(".card");
+    cards.forEach(crd => {
+        crd.addEventListener("click", addElement);
+        crd.addEventListener("click", function inf() {
+            console.log("Вы выбрали карточку: №", crd.id);
+            let id_back = crd.id;
+            switch (id_back) {
+                case "1":
+                    deleteElement();
+                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    setTimeout(() => {
+                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    }, 2000);
+                    //createFun();
+                    break;
+                case "2":
+                    deleteElement();
+                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    setTimeout(() => {
+                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    }, 2000);
+                    //createFun();
+                    break;
+                case "3":
+                    deleteElement();
+                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    setTimeout(() => {
+                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    }, 2000);
+                    //createFun();
+                    break;
+                case "4":
+                    deleteElement();
+                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    setTimeout(() => {
+                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    }, 2000);
+                    //createFun();
+                    break;
+                case "5":
+                    deleteElement();
+                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    setTimeout(() => {
+                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    }, 2000);
+                    //createFun();
+                    break;
+                case "6":
+                    deleteElement();
+                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    setTimeout(() => {
+                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                    }, 2000);
+                    //createFun();
+                    break;
+                default:
+                    back.style.backgroundImage = `url(./images/1.jpg)`;
+                    break;
+            }
+            close_gall();
+        });
+    });
     open.addEventListener("click", open_gall);
     close.addEventListener("click", close_gall);
 }

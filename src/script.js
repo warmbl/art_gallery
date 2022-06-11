@@ -49,9 +49,21 @@ function open_gall() {
     } else return;
 }
 
-function close_gall() {
+function close_gall(closeTime) {
     if (!can_open) {
-        menu_item.forEach(delayLoop(disappear, 50));
+        switch (closeTime) {
+            case "together":
+                setTimeout(() => {
+                    menu_item.forEach(delayLoop(disappear, 0));
+                }, 800);
+                break;
+            case "in_turn":
+                menu_item.forEach(delayLoop(disappear, 50));
+                break;
+            default:
+                menu_item.forEach(delayLoop(disappear, 50));
+                break;
+        }
         setTimeout(() => {
             center_menu.style.visibility = "hidden";
         }, 500);
@@ -76,16 +88,16 @@ function addElement(e) {
     let f = e.clientX + "px";
     let s = e.clientY + "px";
 
-    addDiv.classList.add("pulse");
-    addDiv.style.clipPath = "circle(10% at " + f + " " + s + ")";
+    addDiv.classList.add("circle");
+    addDiv.style.clipPath = "circle(1% at " + f + " " + s + ")";
     setTimeout(() => {
-        addDiv.style.clipPath = "circle(100% at " + f + " " + s + ")";
+        addDiv.style.clipPath = "circle(110% at " + f + " " + s + ")";
     }, 1);
 }
 function deleteElement() {
     setTimeout(() => {
         back.lastChild.remove();
-    }, 3000);
+    }, 1400);
 }
 
 function load() {
@@ -94,7 +106,7 @@ function load() {
     cards.forEach(crd => {
         crd.addEventListener("click", addElement);
         crd.addEventListener("click", function inf() {
-            console.log("Вы выбрали карточку: №", crd.id);
+            //console.log("Вы выбрали карточку: №", crd.id);
             let id_back = crd.id;
             switch (id_back) {
                 case "1":
@@ -102,54 +114,48 @@ function load() {
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
                         back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    }, 2000);
-                    //createFun();
+                    }, 1000);
                     break;
                 case "2":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
                         back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    }, 2000);
-                    //createFun();
+                    }, 1000);
                     break;
                 case "3":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
                         back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    }, 2000);
-                    //createFun();
+                    }, 1000);
                     break;
                 case "4":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
                         back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    }, 2000);
-                    //createFun();
+                    }, 1000);
                     break;
                 case "5":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
                         back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    }, 2000);
-                    //createFun();
+                    }, 1000);
                     break;
                 case "6":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
                         back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    }, 2000);
-                    //createFun();
+                    }, 1000);
                     break;
                 default:
                     back.style.backgroundImage = `url(./images/1.jpg)`;
                     break;
             }
-            close_gall();
+            close_gall("together");
         });
     });
     open.addEventListener("click", open_gall);

@@ -54,11 +54,9 @@ function close_gall(closeTime) {
         switch (closeTime) {
             case "together":
                 setTimeout(() => {
-                    menu_item.forEach(delayLoop(disappear, 0));
+                    menu_item.forEach(delayLoop(disappear, 10));
+                    //menu_item.forEach(off);
                 }, 800);
-                break;
-            case "in_turn":
-                menu_item.forEach(delayLoop(disappear, 50));
                 break;
             default:
                 menu_item.forEach(delayLoop(disappear, 50));
@@ -113,46 +111,46 @@ function load() {
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
-                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
                     }, 1000);
                     break;
                 case "2":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
-                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
                     }, 1000);
                     break;
                 case "3":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
-                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
                     }, 1000);
                     break;
                 case "4":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
-                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
                     }, 1000);
                     break;
                 case "5":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
-                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
                     }, 1000);
                     break;
                 case "6":
                     deleteElement();
                     addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
                     setTimeout(() => {
-                        back.style.backgroundImage = `url(./images/${id_back}.jpg)`;
+                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
                     }, 1000);
                     break;
                 default:
-                    back.style.backgroundImage = `url(./images/1.jpg)`;
+                    back.style.backgroundImage = `url(./imagesHD/1.jpg)`;
                     break;
             }
             close_gall("together");

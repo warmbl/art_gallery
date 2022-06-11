@@ -3,15 +3,17 @@
     margin: 0;
 }
 html {
-    height: 100%;
-    width: 100%;
+    height: 100vw;
+    width: 100vw;
     overflow: hidden;
+    background-color: black;
 }
 body {
     height: 100%;
     width: 100%;
-    background-size: 100%;
-    background-image: url(./images/1.jpg);
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    background-image: url(./imagesHD/1.jpg);
     transition: 0.3s;
 }
 .blackout {
@@ -117,6 +119,7 @@ footer {
         transform: translate(0, 400px);
     }
 }
+
 @keyframes neww {
     0% {
         width: 1%;
@@ -198,7 +201,8 @@ h1 {
 
 .circle {
     position:static;
-    background-size: 100%;
+    background-size: 100vw;
+    background-repeat: no-repeat;
     transition: 1.5s;
     z-index: 4;
 }

@@ -40,7 +40,6 @@ function reCalc() {
 function scrollUpdate() {
     if (!disableScroll) {
         scrollPos = getScrollPos();
-
         if (clonesWidth + scrollPos >= scrollWidth) {
             // Прокрутка влево, когда доберется до правого края
             setScrollPos(1);
@@ -51,7 +50,6 @@ function scrollUpdate() {
             disableScroll = true;
         }
     }
-
     if (disableScroll) {
         window.setTimeout(function () {
             disableScroll = false;
@@ -83,13 +81,11 @@ const move = e => {
     if (!isDown) return;
     e.preventDefault(); // предотвращение события
     const x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
-
     const dist = x - startX;
     slider.scrollLeft = scrollLeft - dist;
 
     if (scrollPos == -1 || scrollPos == 0) {
         console.log(scrollPos + " Нулевое значение - Левая граница");
-
         setScrollPos(scrollWidth - clonesWidth);
         scrollLeft = slider.scrollLeft + dist;
     } else if (clonesWidth + scrollPos >= scrollWidth) {
@@ -101,7 +97,6 @@ const move = e => {
 
 // Wheel move
 let scrollWheel = slider.scrollLeft;
-
 function wheelMove(ev) {
     scrollPos = getScrollPos();
 
@@ -121,18 +116,16 @@ function wheelMove(ev) {
 function onLoad() {
     // Подгрузка изображений из папки
     let images = [...document.querySelectorAll(".img-div")]; //
-
     images.forEach((image, idx) => {
         image.style.backgroundImage = `url(./images/${idx + 1}.jpg)`;
     });
+
     Array.from(items, item => {
         const clone = item.cloneNode(true);
         slider.appendChild(clone);
         clone.classList.add("js-clone");
     });
-
     clones = slider.querySelectorAll(".js-clone");
-    //console.log(clones);
 
     reCalc();
 
@@ -143,7 +136,6 @@ function onLoad() {
         },
         false,
     );
-
     window.addEventListener(
         "resize",
         function () {
@@ -151,7 +143,6 @@ function onLoad() {
         },
         false,
     );
-
     // Управление мышью и слайдером
     slider.addEventListener("mousedown", start);
     slider.addEventListener("touchstart", start);
@@ -169,4 +160,4 @@ function onLoad() {
     //slider.addEventListener('keyup', end);
 }
 
-window.onload = onLoad;
+window.addEventListener("load", onLoad);

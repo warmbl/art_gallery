@@ -1,9 +1,8 @@
 let open = document.querySelector(".open-gallery");
 let close = document.querySelector(".close-gallery");
-let center_menu = document.querySelector(".center-menu");
 let back = document.querySelector("body");
 let blackout = document.querySelector(".blackout");
-let menu_item;
+let headline = document.querySelector(".headline");
 let can_open = true;
 let cards;
 let addDiv;
@@ -18,59 +17,32 @@ const delayLoop = (fn, delay) => {
 };
 
 const appear = e => {
-    setTimeout(() => {
-        e.style.visibility = "visible";
-    }, 100);
-    e.style.animation = "appearance 0.3s linear 1";
+    headline.classList.add("headline-appearance");
+    e.classList.add("menu-appearance");
 };
 
 const disappear = e => {
-    e.style.visibility = "hidden";
-    setTimeout(() => {
-        e.style.animation = "disappearance 0.3s linear 1";
-    }, 300);
+    headline.classList.remove("headline-appearance");
+    e.classList.remove("menu-appearance");
 };
 
 function open_gall() {
     if (can_open) {
-        //
-        menu_item.forEach(delayLoop(appear, 100));
+        cards.forEach(delayLoop(appear, 100));
         blackout.style.opacity = "0.8";
-        //console.log(menu_item);
-        setTimeout(() => {
-            center_menu.style.visibility = "visible";
-        }, 400);
-
-        setTimeout(() => {
-            open.style.display = "none";
-            close.style.display = "inline";
-            can_open = false;
-        }, 700);
+        open.style.display = "none";
+        close.style.display = "inline";
+        can_open = false;
     } else return;
 }
 
-function close_gall(closeTime) {
+function close_gall() {
     if (!can_open) {
-        switch (closeTime) {
-            case "together":
-                setTimeout(() => {
-                    menu_item.forEach(delayLoop(disappear, 10));
-                    //menu_item.forEach(off);
-                }, 800);
-                break;
-            default:
-                menu_item.forEach(delayLoop(disappear, 50));
-                break;
-        }
-        setTimeout(() => {
-            center_menu.style.visibility = "hidden";
-        }, 500);
-        setTimeout(() => {
-            open.style.display = "inline";
-            close.style.display = "none";
-            blackout.style.opacity = "0";
-            can_open = true;
-        }, 200);
+        open.style.display = "inline";
+        close.style.display = "none";
+        cards.forEach(delayLoop(disappear, 0));
+        blackout.style.opacity = "0";
+        can_open = true;
     } else return;
 }
 
@@ -92,72 +64,51 @@ function addElement(e) {
         addDiv.style.clipPath = "circle(110% at " + f + " " + s + ")";
     }, 1);
 }
-function deleteElement() {
+function changeBackground(number) {
+    addDiv.style.backgroundImage = `url(./images/${number}.jpg)`;
+    setTimeout(() => {
+        back.style.backgroundImage = `url(./imagesHD/${number}.jpg)`;
+        close_gall();
+        //
+    }, 1000);
     setTimeout(() => {
         back.lastChild.remove();
-    }, 1400);
+    }, 1700);
 }
 
-function load() {
-    menu_item = center_menu.querySelectorAll(".slider-item");
+async function load() {
     cards = document.querySelectorAll(".card");
     cards.forEach(crd => {
         crd.addEventListener("click", addElement);
         crd.addEventListener("click", function inf() {
-            //console.log("Вы выбрали карточку: №", crd.id);
             let id_back = crd.id;
             switch (id_back) {
                 case "1":
-                    deleteElement();
-                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    setTimeout(() => {
-                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
-                    }, 1000);
+                    changeBackground(id_back);
                     break;
                 case "2":
-                    deleteElement();
-                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    setTimeout(() => {
-                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
-                    }, 1000);
+                    changeBackground(id_back);
                     break;
                 case "3":
-                    deleteElement();
-                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    setTimeout(() => {
-                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
-                    }, 1000);
+                    changeBackground(id_back);
                     break;
                 case "4":
-                    deleteElement();
-                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    setTimeout(() => {
-                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
-                    }, 1000);
+                    changeBackground(id_back);
                     break;
                 case "5":
-                    deleteElement();
-                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    setTimeout(() => {
-                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
-                    }, 1000);
+                    changeBackground(id_back);
                     break;
                 case "6":
-                    deleteElement();
-                    addDiv.style.backgroundImage = `url(./images/${id_back}.jpg)`;
-                    setTimeout(() => {
-                        back.style.backgroundImage = `url(./imagesHD/${id_back}.jpg)`;
-                    }, 1000);
+                    changeBackground(id_back);
                     break;
                 default:
                     back.style.backgroundImage = `url(./imagesHD/1.jpg)`;
                     break;
             }
-            close_gall("together");
         });
     });
     open.addEventListener("click", open_gall);
     close.addEventListener("click", close_gall);
 }
 
-window.addEventListener("load", load);
+window.onload = load;

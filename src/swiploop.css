@@ -14,7 +14,7 @@
     height: 100%; /* Высота блока */
     display: flex;
     flex-direction: row;
-    --webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 }
 
 .slider::-webkit-scrollbar {

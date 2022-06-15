@@ -14,15 +14,15 @@ body {
     background-size: 100vw;
     background-repeat: no-repeat;
     background-image: url(./imagesHD/1.jpg);
-    transition: 0.3s;
 }
+
 .blackout {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: black;
     opacity: 0;
-    transition: 1s;
+    transition: opacity 2s;
 }
 .icons {
     width: 60%;
@@ -75,67 +75,19 @@ footer {
     width: 100%;
     height: 80%;
     margin-top: 5%;
-    visibility: hidden;
-}
+    /*visibility: hidden;*/
 
-@keyframes down {
-    0% {
-        transform: translate(0, 0);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(0, 400px);
-        opacity: 0;
-    }
-}
-
-@keyframes up {
-    0% {
-        transform: translate(0, 400px);
-        opacity: 0;
-    }
-    100% {
-        transform: translate(0, 0);
-        opacity: 1;
-    }
-}
-
-@keyframes appearance {
-    0% {
-        transform: translate(0, 600px);
-        opacity: 0;
-    }
-    100% {
-        transform: translate(0, 0);
-        opacity: 1;
-    }
-}
-
-@keyframes disappearance {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(0, 400px);
-    }
-}
-
-@keyframes neww {
-    0% {
-        width: 1%;
-        height: 1%;
-        background-size: 100vw;
-    }
-    100% {
-        width: 100%;
-        height: 100%;
-        background-size: 100vw;
-    }
+    transition: 1s;
+    /*animation: appearance 0.3s linear 1;*/
+    /*transform: translateY(50%);*/
 }
 
 .headline {
     margin-left: 5%;
     margin-bottom: 2%;
+
+    transition: 1s;
+    transform: translateX(-200%)
 }
 
 h1 {
@@ -165,7 +117,15 @@ h1 {
     width: 90%;
     border-radius: 10px;
     overflow: hidden; /* чтобы работал border-radius*/
-    transition: 0.5s;
+    transition: 0.8s;
+
+    transform: translateY(120%)
+}
+.menu-appearance {
+    transform: translateY(0%);
+}
+.headline-appearance {
+    transform: translateX(0%);
 }
 .card:hover {
     height: 84%;

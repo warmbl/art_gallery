@@ -88,8 +88,27 @@ function changeBackground(folder, count) {
         back.lastChild.remove();
     }, 2000);
 }
+/*
+function preloader() {
+    var preload = [
+        "./images/1.jpg",
+        "./images/2.jpg",
+        "./images/3.jpg",
+        "./images/4.jpg",
+        "./images/5.jpg",
+        "./images/6.jpg",
+    ];
+    var images = [];
+    for (var i = 0; i < preload.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload[i];
+    }
+    alert("Изображения загружены");
+}
+*/
 
 async function load() {
+    //preloader();
     // Изначально загружается первый арт (test1)
     for (let i = 1; i <= 4; i++) {
         layer = document.createElement("img");

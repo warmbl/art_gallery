@@ -3,7 +3,7 @@
     margin: 0;
 }
 html {
-    height: 100vw;
+    height: 100vh;
     width: 100vw;
     overflow: hidden;
     background-color: black;
@@ -11,9 +11,22 @@ html {
 body {
     height: 100%;
     width: 100%;
-    background-size: 100vw;
-    background-repeat: no-repeat;
-    background-image: url(./imagesHD/1.jpg);
+}
+.back-parallax{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.parallax{
+    position: absolute; /* чтобы png наслаивались друг на друга*/
+    height: auto;
+    width: 110vw;
+    
+    transition: 0s;
 }
 
 .blackout {
@@ -22,7 +35,7 @@ body {
     height: 100vh;
     background-color: black;
     opacity: 0;
-    transition: opacity 2s;
+    transition: opacity 1s;
 }
 .icons {
     width: 60%;
@@ -75,11 +88,6 @@ footer {
     width: 100%;
     height: 80%;
     margin-top: 5%;
-    /*visibility: hidden;*/
-
-    transition: 1s;
-    /*animation: appearance 0.3s linear 1;*/
-    /*transform: translateY(50%);*/
 }
 
 .headline {
@@ -87,7 +95,7 @@ footer {
     margin-bottom: 2%;
 
     transition: 1s;
-    transform: translateX(-200%)
+    transform: translateX(-200%);
 }
 
 h1 {
@@ -96,13 +104,6 @@ h1 {
     margin-left: 10%;
     margin-right: 10%;
     font-family: "Roboto", sans-serif;
-}
-
-
-.parallax {
-    position: absolute;
-    width: 100%;
-    height: 100%;
 }
 
 .open-gallery {
@@ -119,7 +120,7 @@ h1 {
     overflow: hidden; /* чтобы работал border-radius*/
     transition: 0.8s;
 
-    transform: translateY(120%)
+    transform: translateY(120%);
 }
 .menu-appearance {
     transform: translateY(0%);
@@ -150,6 +151,7 @@ h1 {
     width: 100%;
     height: 100%;
     background-size: cover;
+    background-position: center;
 }
 .art-name {
     height: 30%;
@@ -160,7 +162,7 @@ h1 {
 }
 
 .circle {
-    position:static;
+    position: static;
     background-size: 100vw;
     background-repeat: no-repeat;
     transition: 1.5s;

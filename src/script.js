@@ -3,6 +3,8 @@ let close = document.querySelector(".close-gallery");
 let back = document.querySelector("body");
 let blackout = document.querySelector(".blackout");
 let headline = document.querySelector(".headline");
+let parallax = document.querySelector(".back-parallax");
+let layer;
 let can_open = true;
 let cards;
 let addDiv;
@@ -52,7 +54,11 @@ function addElement(e) {
     let maxValue = Math.max(back.clientWidth, back.clientHeight),
         sDiv = addDiv.style;
     back.appendChild(addDiv);
-    sDiv.width = sDiv.height = maxValue + "px";
+    sDiv.height = "100%";
+    sDiv.width = "100%";
+    sDiv.backgroundSize = "110vw auto";
+    sDiv.backgroundPosition = "center";
+
     sDiv.left = e.clientX - maxValue / 2 + "px";
     sDiv.top = e.clientY - maxValue / 2 + "px";
     let f = e.clientX + "px";
@@ -61,22 +67,37 @@ function addElement(e) {
     addDiv.classList.add("circle");
     addDiv.style.clipPath = "circle(1% at " + f + " " + s + ")";
     setTimeout(() => {
-        addDiv.style.clipPath = "circle(110% at " + f + " " + s + ")";
+        addDiv.style.clipPath = "circle(150% at " + f + " " + s + ")";
     }, 1);
 }
-function changeBackground(number) {
-    addDiv.style.backgroundImage = `url(./images/${number}.jpg)`;
+
+function changeBackground(folder, count) {
+    addDiv.style.backgroundImage = `url(./images/${folder}.jpg)`;
     setTimeout(() => {
-        back.style.backgroundImage = `url(./imagesHD/${number}.jpg)`;
+        parallax.innerHTML = "";
+        for (let i = 1; i <= count; i++) {
+            layer = document.createElement("img");
+            layer.classList.add("parallax");
+            layer.src = `./imagesHD/test${folder}/${i}.png`;
+            parallax.appendChild(layer);
+        }
         close_gall();
         //
     }, 1000);
     setTimeout(() => {
         back.lastChild.remove();
-    }, 1700);
+    }, 2000);
 }
 
 async function load() {
+    // Изначально загружается первый арт (test1)
+    for (let i = 1; i <= 4; i++) {
+        layer = document.createElement("img");
+        layer.classList.add("parallax");
+        layer.src = `./imagesHD/test1/${i}.png`;
+        parallax.appendChild(layer);
+    }
+
     cards = document.querySelectorAll(".card");
     cards.forEach(crd => {
         crd.addEventListener("click", addElement);
@@ -84,25 +105,25 @@ async function load() {
             let id_back = crd.id;
             switch (id_back) {
                 case "1":
-                    changeBackground(id_back);
+                    changeBackground(id_back, 4);
                     break;
                 case "2":
-                    changeBackground(id_back);
+                    changeBackground(id_back, 4);
                     break;
                 case "3":
-                    changeBackground(id_back);
+                    changeBackground(id_back, 5);
                     break;
                 case "4":
-                    changeBackground(id_back);
+                    changeBackground(id_back, 3);
                     break;
                 case "5":
-                    changeBackground(id_back);
+                    changeBackground(id_back, 4);
                     break;
                 case "6":
-                    changeBackground(id_back);
+                    changeBackground(id_back, 5);
                     break;
                 default:
-                    back.style.backgroundImage = `url(./imagesHD/1.jpg)`;
+                    back.style.backgroundColor = "red";
                     break;
             }
         });

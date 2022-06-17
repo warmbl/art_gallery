@@ -15,7 +15,7 @@ body {
     position: relative; /* для мобилок, чтобы не скролилось*/
 }
 
-.back-parallax{
+.back-parallax {
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -23,15 +23,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: black; /*ПОТОМ УБРАТЬ*/
+    
+    overflow: hidden;
 }
-.parallax{
+.parallax {
     position: absolute; /* чтобы png наслаивались друг на друга*/
     height: auto;
-    width: 110vw;
-    
-    transition: 0s;
+    width: 120vw;
+
+    /*transition: 0s;*/
 }
 
 .blackout {
@@ -171,11 +171,11 @@ h1 {
     position: static;
     background-size: 100vw;
     background-repeat: no-repeat;
-    transition: 1.5s;
+    transition: 1.3s;
     z-index: 4;
 }
 
-.bg-image{
+.bg-image {
     background-image: url("./images/1.jpg");
     background-position: center;
     height: 100vh;
@@ -183,6 +183,10 @@ h1 {
     background-size: cover;
     z-index: -100;
 
-    filter: blur(1.5rem);
+    
     position: absolute;
+    transition: background-image 1.5s;
+    filter: blur(1.5rem);
+    transform: scale(1.2);
 }
+

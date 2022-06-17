@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 let open = document.querySelector(".open-gallery");
 let close = document.querySelector(".close-gallery");
 let back = document.querySelector("body");
@@ -5,6 +6,7 @@ let blackout = document.querySelector(".blackout");
 let headline = document.querySelector(".headline");
 let parallax = document.querySelector(".back-parallax");
 let bg_image = document.querySelector(".bg-image");
+//let parall = document.querySelector(".parallax");
 let layer;
 let can_open = true;
 let cards;
@@ -20,12 +22,10 @@ const delayLoop = (fn, delay) => {
 };
 
 const appear = e => {
-    headline.classList.add("headline-appearance");
     e.classList.add("menu-appearance");
 };
 
 const disappear = e => {
-    headline.classList.remove("headline-appearance");
     e.classList.remove("menu-appearance");
 };
 
@@ -35,6 +35,7 @@ function open_gall() {
         blackout.style.opacity = "0.8";
         open.style.display = "none";
         close.style.display = "inline";
+        headline.classList.add("headline-appearance");
         can_open = false;
     } else return;
 }
@@ -45,6 +46,7 @@ function close_gall() {
         close.style.display = "none";
         cards.forEach(delayLoop(disappear, 0));
         blackout.style.opacity = "0";
+        headline.classList.remove("headline-appearance");
         can_open = true;
     } else return;
 }
@@ -57,7 +59,7 @@ function addElement(e) {
     back.appendChild(addDiv);
     sDiv.height = "100%";
     sDiv.width = "100%";
-    sDiv.backgroundSize = "110vw auto";
+    sDiv.backgroundSize = "120vw auto";
     sDiv.backgroundPosition = "center";
 
     sDiv.left = e.clientX - maxValue / 2 + "px";
@@ -72,6 +74,13 @@ function addElement(e) {
     }, 1);
 }
 
+function deleteDiv() {
+    //alert("Transition закончил своё выполнение");
+    //console.log(back.lastChild);
+    back.lastChild.remove();
+    headline.removeEventListener("transitionend", deleteDiv, false);
+}
+
 function changeBackground(count) {
     addDiv.style.backgroundImage = `url(./images/${count}.jpg)`;
     setTimeout(() => {
@@ -82,14 +91,13 @@ function changeBackground(count) {
             layer.classList.add("parallax");
             //layer.src = `./imagesHD/test${id}/${i}.png`;
             layer.src = preload[count - 1][i];
+            layer.setAttribute("id", `${count}${i + 1}`);
             parallax.appendChild(layer);
         }
         close_gall();
-        bg_image.style.backgroundImage = `url(./images/${count}.jpg)`;
-    }, 1000);
-    setTimeout(() => {
-        back.lastChild.remove();
-    }, 2000);
+        headline.addEventListener("transitionend", deleteDiv, false);
+    }, 800);
+    bg_image.style.backgroundImage = `url(./images/${count}.jpg)`;
 }
 
 var preload = [
@@ -140,15 +148,56 @@ function preloader() {
 preloader();
 //console.log(preload[2]);
 
-async function load() {
+function load() {
     // Изначально загружается первый арт (test1)
     for (let i = 0; i <= 3; i++) {
         layer = document.createElement("img");
         layer.classList.add("parallax");
+        layer.setAttribute("id", `${i + 1}`);
         //layer.src = `./imagesHD/test1/${i}.png`;
         layer.src = `${preload[0][i]}`;
         parallax.appendChild(layer);
     }
+    
+    const firstLayer = 40;
+    const secondLayer = 30;
+    const thirdLayer = 20;
+    const fourthLayer = 10;
+    const speed = 0.05;
+
+    let positionX = 0,
+        positionY = 0;
+    let coordXprocent = 0,
+        coordYprocent = 0;
+    let fi = document.getElementById("1");
+    let se = document.getElementById("2");
+    let th = document.getElementById("3");
+    let fo = document.getElementById("4");
+    
+    back.addEventListener("mousemove", function(e){
+        const distX = coordXprocent - positionX;
+        const distY = coordYprocent - positionY;
+
+        positionX = positionX + (distX * speed);
+        positionY = positionY + (distY * speed);
+        //console.log(distX, distY);
+        // eslint-disable-next-line prettier/prettier
+        fi.style.cssText = `transform: translate(${positionX / firstLayer}%, ${positionY / firstLayer}%);`;
+        se.style.cssText = `transform: translate(${positionX / secondLayer}%, ${positionY / secondLayer}%);`;
+        th.style.cssText = `transform: translate(${positionX / thirdLayer}%, ${positionY / thirdLayer}%);`;
+        fo.style.cssText = `transform: translate(${positionX / fourthLayer}%, ${positionY / fourthLayer}%);`;
+
+        const parallaxWidth = parallax.offsetWidth;
+        const parallaxHeight = parallax.offsetHeight;
+
+        const coordX = e.pageX - parallaxWidth / 2;
+        const coordY = e.pageY - parallaxHeight / 2;
+
+        coordXprocent = coordX / parallaxWidth * 100;
+        coordYprocent = coordY / parallaxHeight * 100;
+    })
+    
+
     cards = document.querySelectorAll(".card");
     cards.forEach(crd => {
         crd.addEventListener("click", addElement);

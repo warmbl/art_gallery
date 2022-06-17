@@ -85,11 +85,11 @@ const move = e => {
     slider.scrollLeft = scrollLeft - dist;
 
     if (scrollPos == -1 || scrollPos == 0) {
-        console.log(scrollPos + " Нулевое значение - Левая граница");
+        //console.log(scrollPos + " Нулевое значение - Левая граница");
         setScrollPos(scrollWidth - clonesWidth);
         scrollLeft = slider.scrollLeft + dist;
     } else if (clonesWidth + scrollPos >= scrollWidth) {
-        console.log(scrollPos + " Больше нуля - Правая граница");
+        //console.log(scrollPos + " Больше нуля - Правая граница");
         setScrollPos(1);
         scrollLeft = slider.scrollLeft + dist;
     }

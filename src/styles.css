@@ -139,6 +139,7 @@ h1 {
     width: 94%;
     transition: 0.5s;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .card-art {

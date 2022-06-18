@@ -77,10 +77,6 @@ function addElement(e) {
     let maxValue = Math.max(back.clientWidth, back.clientHeight),
         sDiv = addDiv.style;
     back.appendChild(addDiv);
-    sDiv.height = "100%";
-    sDiv.width = "100%";
-    sDiv.backgroundSize = "120vw auto";
-    sDiv.backgroundPosition = "center";
 
     sDiv.left = e.clientX - maxValue / 2 + "px";
     sDiv.top = e.clientY - maxValue / 2 + "px";
@@ -152,8 +148,19 @@ const prllxFirst = e => {
         const parallaxWidth = parallax.offsetWidth;
         const parallaxHeight = parallax.offsetHeight;
 
-        const coordX = e.pageX || e.touches[0].pageX - parallaxWidth / 2;
-        const coordY = e.pageY || e.touches[0].pageY - parallaxHeight / 2;
+        let coordX;
+        let coordY;
+
+        if (e.pageX){
+            coordX = e.pageX - parallaxWidth / 2;
+            coordY = e.pageY - parallaxHeight / 2;
+            //console.log("компуктер");
+        }
+        else {
+            coordX = e.touches[0].pageX - parallaxWidth / 2;
+            coordY = e.touches[0].pageY - parallaxHeight / 2;
+            //console.log("телефон");
+        }
 
         coordXXprocent = (coordX / parallaxWidth) * 100;
         coordYYprocent = (coordY / parallaxHeight) * 100;
@@ -178,11 +185,25 @@ const prllx = e => {
         const parallaxWidth = parallax.offsetWidth;
         const parallaxHeight = parallax.offsetHeight;
 
-        const coordX = e.pageX || e.touches[0].pageX - parallaxWidth / 2;
-        const coordY = e.pageY || e.touches[0].pageY - parallaxHeight / 2;
+        let coordX;
+        let coordY;
+
+        if (e.pageX){
+            coordX = e.pageX - parallaxWidth / 2;
+            coordY = e.pageY - parallaxHeight / 2;
+            //console.log("компуктер");
+        }
+        else {
+            coordX = e.touches[0].pageX - parallaxWidth / 2;
+            coordY = e.touches[0].pageY - parallaxHeight / 2;
+            //console.log("телефон");
+        }
 
         coordXprocent = (coordX / parallaxWidth) * 100;
         coordYprocent = (coordY / parallaxHeight) * 100;
+
+        //console.log(coordX, coordY);
+
     } else return;
 };
 

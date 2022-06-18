@@ -93,7 +93,9 @@ footer {
     position: absolute;
     width: 100%;
     height: 80%;
-    margin-top: 5%;
+    /* Центрированиe по вертикали для position: absolute */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .headline {
@@ -170,10 +172,13 @@ h1 {
 
 .circle {
     position: static;
-    background-size: 100vw;
+    background-size: 120vw;
     background-repeat: no-repeat;
     transition: 1.3s;
     z-index: 4;
+    height: 100%;
+    width: 100%;
+    background-position: center;
 }
 
 .bg-image {
@@ -188,4 +193,17 @@ h1 {
     transition: background-image 1.5s;
     filter: blur(1.5rem);
     transform: scale(1.2);
+}
+
+@media (max-aspect-ratio: 3/2) {
+    .parallax{
+        height: 120vh;
+        width: auto;
+    }
+
+    div.circle{
+        background-size: auto 120vh;
+        width: 100%;
+        height: 100%;
+    }
 }

@@ -179,7 +179,7 @@ const prllx = e => {
         const parallaxHeight = parallax.offsetHeight;
 
         const coordX = e.pageX || e.touches[0].pageX - parallaxWidth / 2;
-        const coordY = e.pageY || e.touches[0].pageX - parallaxHeight / 2;
+        const coordY = e.pageY || e.touches[0].pageY - parallaxHeight / 2;
 
         coordXprocent = (coordX / parallaxWidth) * 100;
         coordYprocent = (coordY / parallaxHeight) * 100;

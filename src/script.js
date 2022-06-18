@@ -97,7 +97,7 @@ function deleteDiv() {
 }
 
 function changeBackground(count) {
-    addDiv.style.backgroundImage = `url(./images/${count}.jpg)`;
+    addDiv.style.backgroundImage = `url(./images/${count}.webp)`;
     setTimeout(() => {
         parallax.innerHTML = "";
         for (let i = 0; i < preload[count - 1].length; i++) {
@@ -116,7 +116,7 @@ function changeBackground(count) {
         close_gall();
         headline.addEventListener("transitionend", deleteDiv, false);
     }, 800);
-    bg_image.style.backgroundImage = `url(./images/${count}.jpg)`;
+    bg_image.style.backgroundImage = `url(./images/${count}.webp)`;
 }
 
 function preloader() {
@@ -209,18 +209,11 @@ const prllx = e => {
 
 function load() {
     // Изначально загружается первый арт (test1)
-    for (let i = 0; i < mobilePreload.length; i++) {
+    for (let i = 0; i < firstBackgroundPreload.length; i++) {
         layer = document.createElement("img");
         layer.classList.add("parallax");
         layer.setAttribute("id", `${i + 1}`);
-        
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            layer.src = `${mobilePreload[i]}`;
-            //console.log("Телефон");
-        } else {
-            layer.src = `${firstBackgroundPreload[i]}`;
-            //console.log("Компуктер");
-        }
+        layer.src = `${firstBackgroundPreload[i]}`;
         layer.alt = `Слой изображения № ${i + 1}`;
         parallax.appendChild(layer);
         massivFirst.push(document.getElementById(`${i + 1}`));

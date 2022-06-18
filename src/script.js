@@ -109,10 +109,10 @@ function changeBackground(count) {
             layer.classList.add("parallax");
             //layer.src = `./imagesHD/test${id}/${i}.png`;
             layer.src = preload[count - 1][i];
-            layer.alt = `Слой изображения № ${i+1}`;
+            layer.alt = `Слой изображения № ${i + 1}`;
             layer.setAttribute("id", `${count}${i + 1}`);
             parallax.appendChild(layer);
-            massivImg.push(document.getElementById(`${count}${i+1}`));
+            massivImg.push(document.getElementById(`${count}${i + 1}`));
         }
         // Parallax
         back.addEventListener("mousemove", prllx);
@@ -133,54 +133,58 @@ function preloader() {
     }
 }
 preloader();
-  
-const prllxFirst = e =>{
-    if (can_parallax){
+
+const prllxFirst = e => {
+    if (can_parallax) {
         const distX = coordXXprocent - positionXX;
-    const distY = coordYYprocent - positionYY;
+        const distY = coordYYprocent - positionYY;
 
-    positionXX = positionXX + (distX * speed);
-    positionYY = positionYY + (distY * speed);
+        positionXX = positionXX + distX * speed;
+        positionYY = positionYY + distY * speed;
 
-    for (let i=0; i < massivFirst.length; i++){
-        firstSpeedLayer = (massivFirst.length - i)*10;
-        massivFirst[i].style.cssText = `transform: translate(${positionXX / firstSpeedLayer}%, ${positionYY / firstSpeedLayer}%);`;
-    }
+        for (let i = 0; i < massivFirst.length; i++) {
+            firstSpeedLayer = (massivFirst.length - i) * 10;
+            massivFirst[i].style.cssText = `transform: translate(${
+                positionXX / firstSpeedLayer
+            }%, ${positionYY / firstSpeedLayer}%);`;
+        }
 
-    const parallaxWidth = parallax.offsetWidth;
-    const parallaxHeight = parallax.offsetHeight;
+        const parallaxWidth = parallax.offsetWidth;
+        const parallaxHeight = parallax.offsetHeight;
 
-    const coordX = e.pageX - parallaxWidth / 2;
-    const coordY = e.pageY - parallaxHeight / 2;
+        const coordX = e.pageX || e.touches[0].pageX - parallaxWidth / 2;
+        const coordY = e.pageY || e.touches[0].pageY - parallaxHeight / 2;
 
-    coordXXprocent = coordX / parallaxWidth * 100;
-    coordYYprocent = coordY / parallaxHeight * 100;
-    } else return;    
-}
-
-const prllx = e =>{
-    if (can_parallax){
-        const distX = coordXprocent - positionX;
-    const distY = coordYprocent - positionY;
-
-    positionX = positionX + (distX * speed);
-    positionY = positionY + (distY * speed);
-
-    for (let i=0; i < massivImg.length; i++){
-        speedLayer = (massivImg.length - i)*10;
-        massivImg[i].style.cssText = `transform: translate(${positionX / speedLayer}%, ${positionY / speedLayer}%);`;
-    }
-         
-    const parallaxWidth = parallax.offsetWidth;
-    const parallaxHeight = parallax.offsetHeight;
-
-    const coordX = e.pageX - parallaxWidth / 2;
-    const coordY = e.pageY - parallaxHeight / 2;
-
-    coordXprocent = coordX / parallaxWidth * 100;
-    coordYprocent = coordY / parallaxHeight * 100;
+        coordXXprocent = (coordX / parallaxWidth) * 100;
+        coordYYprocent = (coordY / parallaxHeight) * 100;
     } else return;
-}
+};
+
+const prllx = e => {
+    if (can_parallax) {
+        const distX = coordXprocent - positionX;
+        const distY = coordYprocent - positionY;
+
+        positionX = positionX + distX * speed;
+        positionY = positionY + distY * speed;
+
+        for (let i = 0; i < massivImg.length; i++) {
+            speedLayer = (massivImg.length - i) * 10;
+            massivImg[i].style.cssText = `transform: translate(${positionX / speedLayer}%, ${
+                positionY / speedLayer
+            }%);`;
+        }
+
+        const parallaxWidth = parallax.offsetWidth;
+        const parallaxHeight = parallax.offsetHeight;
+
+        const coordX = e.pageX || e.touches[0].pageX - parallaxWidth / 2;
+        const coordY = e.pageY || e.touches[0].pageX - parallaxHeight / 2;
+
+        coordXprocent = (coordX / parallaxWidth) * 100;
+        coordYprocent = (coordY / parallaxHeight) * 100;
+    } else return;
+};
 
 function load() {
     // Изначально загружается первый арт (test1)
@@ -189,9 +193,9 @@ function load() {
         layer.classList.add("parallax");
         layer.setAttribute("id", `${i + 1}`);
         layer.src = `${firstBackgroundPreload[i]}`;
-        layer.alt = `Слой изображения № ${i+1}`;
+        layer.alt = `Слой изображения № ${i + 1}`;
         parallax.appendChild(layer);
-        massivFirst.push(document.getElementById(`${i+1}`));
+        massivFirst.push(document.getElementById(`${i + 1}`));
     }
     back.addEventListener("mousemove", prllxFirst);
     back.addEventListener("touchmove", prllxFirst);

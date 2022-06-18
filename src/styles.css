@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     overflow: hidden;
 }
 .parallax {
@@ -184,10 +184,8 @@ h1 {
     background-size: cover;
     z-index: -100;
 
-    
     position: absolute;
     transition: background-image 1.5s;
     filter: blur(1.5rem);
     transform: scale(1.2);
 }
-

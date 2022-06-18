@@ -209,11 +209,18 @@ const prllx = e => {
 
 function load() {
     // Изначально загружается первый арт (test1)
-    for (let i = 0; i < firstBackgroundPreload.length; i++) {
+    for (let i = 0; i < mobilePreload.length; i++) {
         layer = document.createElement("img");
         layer.classList.add("parallax");
         layer.setAttribute("id", `${i + 1}`);
-        layer.src = `${firstBackgroundPreload[i]}`;
+        
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            layer.src = `${mobilePreload[i]}`;
+            //console.log("Телефон");
+        } else {
+            layer.src = `${firstBackgroundPreload[i]}`;
+            //console.log("Компуктер");
+        }
         layer.alt = `Слой изображения № ${i + 1}`;
         parallax.appendChild(layer);
         massivFirst.push(document.getElementById(`${i + 1}`));

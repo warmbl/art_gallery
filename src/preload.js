@@ -41,3 +41,10 @@ let firstBackgroundPreload = [
     "./imagesHD/test1/3.png",
     "./imagesHD/test1/4.png",
 ];
+
+let mobilePreload = [
+    "./imagesHD/test1/1.webp",
+    "./imagesHD/test1/2.webp",
+    "./imagesHD/test1/3.webp",
+    "./imagesHD/test1/4.webp",
+];

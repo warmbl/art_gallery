@@ -6,7 +6,6 @@ let blackout = document.querySelector(".blackout");
 let headline = document.querySelector(".headline");
 let parallax = document.querySelector(".back-parallax");
 let bg_image = document.querySelector(".bg-image");
-//let parall = document.querySelector(".parallax");
 let layer;
 let can_open = true;
 let cards;
@@ -84,6 +83,11 @@ function deleteDiv() {
 function changeBackground(count) {
     addDiv.style.backgroundImage = `url(./images/${count}.jpg)`;
     setTimeout(() => {
+        let positionX = 0,
+            positionY = 0;
+        let coordXprocent = 0,
+            coordYprocent = 0;
+        let massivImg = [];
         parallax.innerHTML = "";
         for (let i = 0; i < preload[count - 1].length; i++) {
             //console.log(preload[count - 1].length);
@@ -92,10 +96,36 @@ function changeBackground(count) {
             //layer.src = `./imagesHD/test${id}/${i}.png`;
             layer.src = preload[count - 1][i];
             layer.setAttribute("id", `${count}${i + 1}`);
+            //console.log(layer);
             parallax.appendChild(layer);
+            massivImg.push(document.getElementById(`${count}${i+1}`));
         }
+        let speedLayer;
+
+        // Parallax
+        back.addEventListener("mousemove", function(e){
+            const distX = coordXprocent - positionX;
+            const distY = coordYprocent - positionY;
+
+            positionX = positionX + (distX * 0.05);
+            positionY = positionY + (distY * 0.05);
+            for (let i=0; i < massivImg.length; i++){
+                speedLayer = (massivImg.length - i)*10;
+                massivImg[i].style.cssText = `transform: translate(${positionX / speedLayer}%, ${positionY / speedLayer}%);`;
+            }
+                 
+            const parallaxWidth = parallax.offsetWidth;
+            const parallaxHeight = parallax.offsetHeight;
+    
+            const coordX = e.pageX - parallaxWidth / 2;
+            const coordY = e.pageY - parallaxHeight / 2;
+    
+            coordXprocent = coordX / parallaxWidth * 100;
+            coordYprocent = coordY / parallaxHeight * 100;
+        })
         close_gall();
         headline.addEventListener("transitionend", deleteDiv, false);
+    
     }, 800);
     bg_image.style.backgroundImage = `url(./images/${count}.jpg)`;
 }
@@ -143,10 +173,8 @@ function preloader() {
             images[j].src = preload[i][j];
         }
     }
-    //console.log(preload);
 }
 preloader();
-//console.log(preload[2]);
 
 function load() {
     // Изначально загружается первый арт (test1)
@@ -180,8 +208,6 @@ function load() {
 
         positionX = positionX + (distX * speed);
         positionY = positionY + (distY * speed);
-        //console.log(distX, distY);
-        // eslint-disable-next-line prettier/prettier
         fi.style.cssText = `transform: translate(${positionX / firstLayer}%, ${positionY / firstLayer}%);`;
         se.style.cssText = `transform: translate(${positionX / secondLayer}%, ${positionY / secondLayer}%);`;
         th.style.cssText = `transform: translate(${positionX / thirdLayer}%, ${positionY / thirdLayer}%);`;

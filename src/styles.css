@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "BeautifulFont";
+    src: url("./fonts/DancingScript-Regular.ttf");
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -83,7 +87,7 @@ footer {
 .sign {
     width: 20%;
     color: white;
-    font-family: "Dancing Script", cursive;
+    font-family: "BeautifulFont", cursive;
     font-size: 24px;
     margin-top: 3%;
     text-align: center;

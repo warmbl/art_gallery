@@ -30,6 +30,8 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
             "./imagesHD/test5/2.webp",
             "./imagesHD/test5/3.webp",
             "./imagesHD/test5/4.webp",
+            "./imagesHD/test5/5.webp",
+            "./imagesHD/test5/6.webp",
         ],
         [
             "./imagesHD/test6/1.webp",
@@ -73,6 +75,8 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
             "./imagesHD/test5/2.png",
             "./imagesHD/test5/3.png",
             "./imagesHD/test5/4.png",
+            "./imagesHD/test5/5.png",
+            "./imagesHD/test5/6.png",
         ],
         [
             "./imagesHD/test6/1.png",

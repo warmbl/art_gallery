@@ -61,6 +61,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
             "./imagesHD/test2/2.png",
             "./imagesHD/test2/3.png",
             "./imagesHD/test2/4.png",
+            "./imagesHD/test2/5.gif",
         ],
         [
             "./imagesHD/test3/1.png",

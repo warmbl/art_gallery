@@ -14,6 +14,7 @@ let addDiv;
 let can_parallax = true;
 
 const speed = 0.05;
+const power = 10; // Чем меньше константа, чем больше контраст между смещением слоев
 
 let firstSpeedLayer;
 let massivFirst = [];
@@ -139,7 +140,7 @@ const prllxFirst = e => {
         positionYY = positionYY + distY * speed;
 
         for (let i = 0; i < massivFirst.length; i++) {
-            firstSpeedLayer = (massivFirst.length - i) * 10;
+            firstSpeedLayer = (massivFirst.length - i) * power;
             massivFirst[i].style.cssText = `transform: translate(${
                 positionXX / firstSpeedLayer
             }%, ${positionYY / firstSpeedLayer}%);`;
@@ -176,7 +177,7 @@ const prllx = e => {
         positionY = positionY + distY * speed;
 
         for (let i = 0; i < massivImg.length; i++) {
-            speedLayer = (massivImg.length - i) * 10;
+            speedLayer = (massivImg.length - i) * power;
             massivImg[i].style.cssText = `transform: translate(${positionX / speedLayer}%, ${
                 positionY / speedLayer
             }%);`;

@@ -2,24 +2,28 @@
     font-family: "BeautifulFont";
     src: url("./fonts/DancingScript-Regular.ttf");
 }
+
 * {
     box-sizing: border-box;
     margin: 0;
 }
+
 html {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
     background-color: black;
 }
+
 body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    position: relative; /* для мобилок, чтобы не скролилось*/
+    position: relative;
+    /* для мобилок, чтобы не скролилось*/
 }
 
-a{
+a {
     height: 30px;
     width: 30px;
     margin: 5%;
@@ -39,8 +43,10 @@ a{
 
     overflow: hidden;
 }
+
 .parallax {
-    position: absolute; /* чтобы png наслаивались друг на друга*/
+    position: absolute;
+    /* чтобы png наслаивались друг на друга*/
     height: auto;
     width: 120vw;
 
@@ -55,31 +61,37 @@ a{
     opacity: 0;
     transition: opacity 1s;
 }
+
 .icons {
     width: 30px;
     height: 30px;
     transition: 0.3s;
 }
+
 .icons:hover {
     width: 40px;
     height: 40px;
     transition: 0.3s;
 }
+
 .icons-b {
     width: 40px;
     height: 40px;
     transition: 0.3s;
 }
+
 .icons-b:hover {
     width: 50px;
     height: 50px;
     transition: 0.3s;
 }
+
 button,
 a {
     border: 0;
     background-color: rgba(0, 0, 0, 0);
 }
+
 footer {
     display: flex;
     justify-content: space-between;
@@ -90,6 +102,7 @@ footer {
     z-index: 2;
     box-shadow: 0px -100px 55px -62px rgba(0, 0, 0, 1) inset;
 }
+
 .social-network {
     width: 30%;
     display: flex;
@@ -97,11 +110,13 @@ footer {
     align-items: center;
     margin-left: 5%;
 }
+
 .button-menu {
     width: 40%;
     display: flex;
     justify-content: center;
 }
+
 .sign {
     width: 30%;
     color: white;
@@ -111,7 +126,8 @@ footer {
     justify-content: end;
     align-items: center;
 }
-.author{
+
+.author {
     padding: 10%;
 }
 
@@ -145,6 +161,7 @@ h1 {
     height: 100%;
     width: 50%;
 }
+
 .close-gallery {
     display: none;
 }
@@ -153,17 +170,21 @@ h1 {
     height: 80%;
     width: 90%;
     border-radius: 10px;
-    overflow: hidden; /* чтобы работал border-radius*/
+    overflow: hidden;
+    /* чтобы работал border-radius*/
     transition: 0.8s;
 
     transform: translateY(120%);
 }
+
 .menu-appearance {
     transform: translateY(0%);
 }
+
 .headline-appearance {
     transform: translateX(0%);
 }
+
 .card:hover {
     height: 84%;
     width: 94%;
@@ -177,6 +198,7 @@ h1 {
     height: 60%;
     background-color: black;
 }
+
 .card-name {
     background-color: white;
     width: 100%;
@@ -184,12 +206,14 @@ h1 {
     display: flex;
     align-items: center;
 }
+
 .img-div {
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
 }
+
 .art-name {
     height: 30%;
     overflow: hidden;
@@ -224,18 +248,18 @@ h1 {
 }
 
 @media (max-aspect-ratio: 3/2) {
-    .parallax{
+    .parallax {
         height: 120vh;
         width: auto;
     }
 
-    div.circle{
+    div.circle {
         background-size: auto 120vh;
         width: 100%;
         height: 100%;
     }
 
-    a{
+    a {
         height: 20px;
         width: 20px;
         margin: 4%;
@@ -249,6 +273,7 @@ h1 {
         height: 20px;
         transition: 0.3s;
     }
+
     .icons:hover {
         width: 30px;
         height: 30px;

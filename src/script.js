@@ -98,7 +98,7 @@ function deleteDiv() {
 }
 
 function changeBackground(count) {
-    addDiv.style.backgroundImage = `url(./images/${count}.webp)`;
+    addDiv.style.backgroundImage = `url(./src/images/${count}.webp)`;
     setTimeout(() => {
         parallax.innerHTML = "";
         for (let i = 0; i < preload[count - 1].length; i++) {
@@ -117,7 +117,7 @@ function changeBackground(count) {
         close_gall();
         headline.addEventListener("transitionend", deleteDiv, false);
     }, 800);
-    bg_image.style.backgroundImage = `url(./images/${count}.webp)`;
+    bg_image.style.backgroundImage = `url(./src/images/${count}.webp)`;
 }
 
 function preloader() {
@@ -141,9 +141,8 @@ const prllxFirst = e => {
 
         for (let i = 0; i < massivFirst.length; i++) {
             firstSpeedLayer = (massivFirst.length - i) * power;
-            massivFirst[i].style.cssText = `transform: translate(${
-                positionXX / firstSpeedLayer
-            }%, ${positionYY / firstSpeedLayer}%);`;
+            massivFirst[i].style.cssText = `transform: translate(${positionXX / firstSpeedLayer
+                }%, ${positionYY / firstSpeedLayer}%);`;
         }
 
         const parallaxWidth = parallax.offsetWidth;
@@ -152,7 +151,7 @@ const prllxFirst = e => {
         let coordX;
         let coordY;
 
-        if (e.pageX){
+        if (e.pageX) {
             coordX = e.pageX - parallaxWidth / 2;
             coordY = e.pageY - parallaxHeight / 2;
             //console.log("компуктер");
@@ -178,9 +177,8 @@ const prllx = e => {
 
         for (let i = 0; i < massivImg.length; i++) {
             speedLayer = (massivImg.length - i) * power;
-            massivImg[i].style.cssText = `transform: translate(${positionX / speedLayer}%, ${
-                positionY / speedLayer
-            }%);`;
+            massivImg[i].style.cssText = `transform: translate(${positionX / speedLayer}%, ${positionY / speedLayer
+                }%);`;
         }
 
         const parallaxWidth = parallax.offsetWidth;
@@ -189,7 +187,7 @@ const prllx = e => {
         let coordX;
         let coordY;
 
-        if (e.pageX){
+        if (e.pageX) {
             coordX = e.pageX - parallaxWidth / 2;
             coordY = e.pageY - parallaxHeight / 2;
             //console.log("компуктер");

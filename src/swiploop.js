@@ -117,7 +117,7 @@ function onLoad() {
     // Подгрузка изображений из папки
     let images = [...document.querySelectorAll(".img-div")]; //
     images.forEach((image, idx) => {
-        image.style.backgroundImage = `url(./images/${idx + 1}.webp)`;
+        image.style.backgroundImage = `url(./src/images/${idx + 1}.webp)`;
     });
 
     Array.from(items, item => {
